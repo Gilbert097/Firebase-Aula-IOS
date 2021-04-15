@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C53767339E7444483D484A24 /* Pods_Firebase_Aula.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC3B9384D45A95399F97A22 /* Pods_Firebase_Aula.framework */; };
 		D404AC7C2627A38400DFC328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404AC7B2627A38400DFC328 /* AppDelegate.swift */; };
 		D404AC7E2627A38400DFC328 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404AC7D2627A38400DFC328 /* SceneDelegate.swift */; };
 		D404AC802627A38400DFC328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D404AC7F2627A38400DFC328 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3767A0D53CDF83318EF02E65 /* Pods-Firebase Aula.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase Aula.debug.xcconfig"; path = "Target Support Files/Pods-Firebase Aula/Pods-Firebase Aula.debug.xcconfig"; sourceTree = "<group>"; };
+		437EC521F73848CF294ED0F4 /* Pods-Firebase Aula.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase Aula.release.xcconfig"; path = "Target Support Files/Pods-Firebase Aula/Pods-Firebase Aula.release.xcconfig"; sourceTree = "<group>"; };
+		BAC3B9384D45A95399F97A22 /* Pods_Firebase_Aula.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Aula.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D404AC782627A38400DFC328 /* Firebase Aula.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Firebase Aula.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D404AC7B2627A38400DFC328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D404AC7D2627A38400DFC328 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53767339E7444483D484A24 /* Pods_Firebase_Aula.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9678908188F4141D2F93078F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAC3B9384D45A95399F97A22 /* Pods_Firebase_Aula.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3DE4DACB18510A3FFB1C801 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3767A0D53CDF83318EF02E65 /* Pods-Firebase Aula.debug.xcconfig */,
+				437EC521F73848CF294ED0F4 /* Pods-Firebase Aula.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D404AC6F2627A38400DFC328 = {
 			isa = PBXGroup;
 			children = (
 				D404AC7A2627A38400DFC328 /* Firebase Aula */,
 				D404AC792627A38400DFC328 /* Products */,
+				D3DE4DACB18510A3FFB1C801 /* Pods */,
+				9678908188F4141D2F93078F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D404AC8C2627A38600DFC328 /* Build configuration list for PBXNativeTarget "Firebase Aula" */;
 			buildPhases = (
+				AB23475947CAFD470030B22F /* [CP] Check Pods Manifest.lock */,
 				D404AC742627A38400DFC328 /* Sources */,
 				D404AC752627A38400DFC328 /* Frameworks */,
 				D404AC762627A38400DFC328 /* Resources */,
+				83BE45288FDBDE08FE434FD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83BE45288FDBDE08FE434FD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Firebase Aula/Pods-Firebase Aula-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Firebase Aula/Pods-Firebase Aula-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Firebase Aula/Pods-Firebase Aula-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB23475947CAFD470030B22F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Firebase Aula-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D404AC742627A38400DFC328 /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		D404AC8D2627A38600DFC328 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3767A0D53CDF83318EF02E65 /* Pods-Firebase Aula.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +375,7 @@
 		};
 		D404AC8E2627A38600DFC328 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 437EC521F73848CF294ED0F4 /* Pods-Firebase Aula.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
