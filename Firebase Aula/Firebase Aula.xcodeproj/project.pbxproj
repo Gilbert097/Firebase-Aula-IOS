@@ -17,6 +17,7 @@
 		D404AC992627A7A500DFC328 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D404AC982627A7A500DFC328 /* GoogleService-Info.plist */; };
 		D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93702628CA6000265304 /* UserDataResponse.swift */; };
 		D4EE93752628CB2700265304 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93742628CB2700265304 /* User.swift */; };
+		D4EE93792628EDFF00265304 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93782628EDFF00265304 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D404AC982627A7A500DFC328 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4EE93702628CA6000265304 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 		D4EE93742628CB2700265304 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D4EE93782628EDFF00265304 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		D404AC7A2627A38400DFC328 /* Firebase Aula */ = {
 			isa = PBXGroup;
 			children = (
+				D4EE93772628EDF100265304 /* service */,
 				D404AC7B2627A38400DFC328 /* AppDelegate.swift */,
 				D404AC7D2627A38400DFC328 /* SceneDelegate.swift */,
 				D404AC7F2627A38400DFC328 /* ViewController.swift */,
@@ -98,6 +101,14 @@
 				D4EE93742628CB2700265304 /* User.swift */,
 			);
 			path = "Firebase Aula";
+			sourceTree = "<group>";
+		};
+		D4EE93772628EDF100265304 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				D4EE93782628EDFF00265304 /* UserService.swift */,
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +228,7 @@
 			files = (
 				D404AC802627A38400DFC328 /* ViewController.swift in Sources */,
 				D404AC7C2627A38400DFC328 /* AppDelegate.swift in Sources */,
+				D4EE93792628EDFF00265304 /* UserService.swift in Sources */,
 				D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */,
 				D4EE93752628CB2700265304 /* User.swift in Sources */,
 				D404AC7E2627A38400DFC328 /* SceneDelegate.swift in Sources */,
