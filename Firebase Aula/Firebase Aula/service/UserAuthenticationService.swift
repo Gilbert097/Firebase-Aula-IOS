@@ -14,9 +14,17 @@ private extension String {
     static let invalidEmail = "E-mail é inválido."
     static let weakPassword = "Senha considerada muito fraca."
     static let createUserError = "Erro ao tentar criar usuário."
+    static let loginUserError = "Erro ao tentar efeutar login."
 }
 
 public class UserAuthenticationService {
+    
+    typealias AuthDataError = (error: Error?, action: AuthenticationAction)
+    
+    enum AuthenticationAction{
+        case signIn
+        case createUser
+    }
     
     public init(){
         addUserAuthenticationStateListner()
@@ -28,17 +36,39 @@ public class UserAuthenticationService {
         completion: @escaping (UserAuthentication?, String?) -> Void
     ){
         Auth.auth().createUser(withEmail: email, password: password) {
-           [weak self] (authDataResult: AuthDataResult?, error: Error?) in
+            [weak self] (authDataResult: AuthDataResult?, error: Error?) in
             guard let self = self else { return }
-            if let authDataResult = authDataResult {
-                self.notifyAuthenticationSuccess(authDataResult: authDataResult, completion: completion)
-            } else if  let error = error {
-                self.notifyAuthenticationError(error: error, completion: completion)
-            }
+            let authDataError: AuthDataError? = error != nil ? (error, .createUser) : nil
+            self.notifyUserAuthentication(authDataResult: authDataResult, authDataError: authDataError, completion: completion)
         }
     }
     
-    private func notifyAuthenticationSuccess(
+    public func signIn(
+        email: String,
+        password: String,
+        completion: @escaping (UserAuthentication?, String?) -> Void
+    ){
+        Auth.auth().signIn(withEmail: email, password: password) {
+            [weak self] (authDataResult: AuthDataResult?, error: Error?) in
+            guard let self = self else { return }
+            let authDataError: AuthDataError? = error != nil ? (error, .signIn) : nil
+            self.notifyUserAuthentication(authDataResult: authDataResult, authDataError: authDataError, completion: completion)
+        }
+    }
+    
+    private func notifyUserAuthentication(
+        authDataResult: AuthDataResult?,
+        authDataError: AuthDataError?,
+        completion: @escaping (UserAuthentication?, String?) -> Void
+    ) {
+        if let authDataResult = authDataResult {
+            notifyUserAuthenticationSuccess(authDataResult: authDataResult, completion: completion)
+        } else if  let authDataError = authDataError {
+            notifyUserAuthenticationError(authDataError: authDataError, completion: completion)
+        }
+    }
+    
+    private func notifyUserAuthenticationSuccess(
         authDataResult: AuthDataResult,
         completion: @escaping (UserAuthentication?, String?) -> Void
     ) {
@@ -47,18 +77,28 @@ public class UserAuthenticationService {
         completion(UserAuthentication(uid: id, email: email), nil)
     }
     
-    private func notifyAuthenticationError(
-        error: Error,
+    private func notifyUserAuthenticationError(
+        authDataError: AuthDataError,
         completion: @escaping (UserAuthentication?, String?) -> Void
     ){
         guard
-            let errorParse = error as NSError?
+            let errorParse = authDataError.error as NSError?
         else {
-            completion(nil, .createUserError)
+            let message = getDefaultMessageErrorByAction(action: authDataError.action)
+            completion(nil, message)
             return
         }
         let errorMessage = self.getAuthenticationErrorMessage(error: errorParse)
         completion(nil, errorMessage)
+    }
+    
+    private func getDefaultMessageErrorByAction(action: AuthenticationAction) -> String {
+        switch action {
+        case .signIn:
+            return .loginUserError
+        case .createUser:
+            return .createUserError
+        }
     }
     
     private func getAuthenticationErrorMessage(error: NSError) -> String
@@ -79,8 +119,8 @@ public class UserAuthenticationService {
     
     private func addUserAuthenticationStateListner() {
         Auth.auth().addStateDidChangeListener { (firAuth, user) in
-            if let user = user {
-                print("Usuário logado \(String(describing: user.email)).")
+            if let user = user, let email = user.email {
+                print("Usuário logado \(String(describing: email)).")
             }else{
                 print("Nenhum usuário logado!")
             }

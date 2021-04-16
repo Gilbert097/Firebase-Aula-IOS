@@ -6,8 +6,14 @@
 //
 
 import UIKit
+private extension String {
+    static let successTitle = "Sucesso"
+    static let errorTitle = "Erro"
+    static let alertActionTitle = "Ok"
+}
 
 class ViewController: UIViewController {
+    typealias  AuthLogin = (email: String, password: String)
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     let userAuthenticationService = UserAuthenticationService()
@@ -17,37 +23,55 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
+        if let authLogin = validateFieldsFilled() {
+            userAuthenticationService.signIn(email: authLogin.email, password: authLogin.password)
+            { [weak self] (userAuthentication, errorMessage) in
+                guard let self = self else { return }
+                self.showSiginMessage(userAuthentication: userAuthentication, errorMessage: errorMessage)
+            }
+        }
     }
     
-   
     @IBAction func createUserButtonClick(_ sender: UIButton) {
+        if let authLogin = validateFieldsFilled() {
+            userAuthenticationService.createUserAuthentication(email: authLogin.email, password: authLogin.password)
+            { [weak self] (userAuthentication, errorMessage) in
+                guard let self = self else { return }
+                self.showCreateUserMessage(userAuthentication: userAuthentication, errorMessage: errorMessage)
+            }
+        }
+    }
+    
+    private func validateFieldsFilled() -> AuthLogin? {
         guard
             let email = self.emailTextField.text,
             let password = self.passwordTextField.text
         else {
             self.showMessage(title: "Campos obrigatórios", message: "Preencha todos os campos!")
-            return
+            return nil
         }
-        
-        userAuthenticationService.createUserAuthentication(email: email, password: password)
-        { [weak self] (userAuthentication, errorMessage) in
-            guard let self = self else { return }
-            self.showMessageByUserAthenticationReturn(userAuthentication, errorMessage)
+        return (email: email, password: password)
+    }
+    
+    private func showSiginMessage(userAuthentication: UserAuthentication?,errorMessage: String?) {
+        if userAuthentication != nil {
+            showMessage(title: .successTitle, message: "Usuário logado com sucesso!")
+        } else if let errorMessage = errorMessage {
+            showMessage(title: .errorTitle, message: errorMessage)
         }
     }
     
-    private func showMessageByUserAthenticationReturn(_ userAuthentication: UserAuthentication?, _ errorMessage: String?) {
+    private func showCreateUserMessage(userAuthentication: UserAuthentication?,errorMessage: String?) {
         if let userAuthentication = userAuthentication {
-            showMessage(title: "Sucesso", message: "Usuário \(userAuthentication.email) criado com sucesso!")
-        } else {
-            guard let errorMessage = errorMessage else { return }
-            showMessage(title: "Error", message: errorMessage)
+            showMessage(title: .successTitle, message: "Usuário \(userAuthentication.email) criado com sucesso!")
+        } else if let errorMessage = errorMessage {
+            showMessage(title: .errorTitle, message: errorMessage)
         }
     }
     
     private func showMessage(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: .alertActionTitle, style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
