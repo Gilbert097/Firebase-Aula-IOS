@@ -41,6 +41,9 @@ class ViewController: UIViewController {
             }
         }
     }
+    @IBAction func signOutButtonClick(_ sender: UIButton) {
+        userAuthenticationService.signOut()
+    }
     
     private func validateFieldsFilled() -> AuthLogin? {
         guard

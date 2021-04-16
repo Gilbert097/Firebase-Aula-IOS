@@ -27,7 +27,7 @@ public class UserAuthenticationService {
     }
     
     public init(){
-        addUserAuthenticationStateListner()
+        registerUserAuthenticationStateListner()
     }
     
     public func createUserAuthentication(
@@ -53,6 +53,14 @@ public class UserAuthenticationService {
             guard let self = self else { return }
             let authDataError: AuthDataError? = error != nil ? (error, .signIn) : nil
             self.notifyUserAuthentication(authDataResult: authDataResult, authDataError: authDataError, completion: completion)
+        }
+    }
+    
+    public func signOut(){
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("SignOut Error: \(error.localizedDescription)")
         }
     }
     
@@ -117,7 +125,7 @@ public class UserAuthenticationService {
         }
     }
     
-    private func addUserAuthenticationStateListner() {
+    private func registerUserAuthenticationStateListner() {
         Auth.auth().addStateDidChangeListener { (firAuth, user) in
             if let user = user, let email = user.email {
                 print("Usuário logado \(String(describing: email)).")
