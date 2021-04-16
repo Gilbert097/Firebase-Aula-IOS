@@ -25,23 +25,36 @@ public class UserAuthenticationService {
     ){
         Auth.auth().createUser(withEmail: email, password: password) {
            [weak self] (authDataResult: AuthDataResult?, error: Error?) in
-            
+            guard let self = self else { return }
             if let authDataResult = authDataResult {
-                let id = authDataResult.user.uid
-                let email = authDataResult.user.email ?? ""
-                completion(UserAuthentication(uid: id, email: email), nil)
+                self.notifyAuthenticationSuccess(authDataResult: authDataResult, completion: completion)
             } else if  let error = error {
-                guard
-                    let self = self,
-                    let errorParse = error as NSError?
-                else {
-                    completion(nil, .createUserError)
-                    return
-                }
-                let errorMessage = self.getAuthenticationErrorMessage(error: errorParse)
-                completion(nil, errorMessage)
+                self.notifyAuthenticationError(error: error, completion: completion)
             }
         }
+    }
+    
+    private func notifyAuthenticationSuccess(
+        authDataResult: AuthDataResult,
+        completion: @escaping (UserAuthentication?, String?) -> Void
+    ) {
+        let id = authDataResult.user.uid
+        let email = authDataResult.user.email ?? ""
+        completion(UserAuthentication(uid: id, email: email), nil)
+    }
+    
+    private func notifyAuthenticationError(
+        error: Error,
+        completion: @escaping (UserAuthentication?, String?) -> Void
+    ){
+        guard
+            let errorParse = error as NSError?
+        else {
+            completion(nil, .createUserError)
+            return
+        }
+        let errorMessage = self.getAuthenticationErrorMessage(error: errorParse)
+        completion(nil, errorMessage)
     }
     
     private func getAuthenticationErrorMessage(error: NSError) -> String
