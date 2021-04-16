@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBAction func loginButtonClick(_ sender: UIButton) {
     }
     
+   
     @IBAction func createUserButtonClick(_ sender: UIButton) {
         guard
             let email = self.emailTextField.text,
@@ -31,13 +32,16 @@ class ViewController: UIViewController {
         userAuthenticationService.createUserAuthentication(email: email, password: password)
         { [weak self] (userAuthentication, errorMessage) in
             guard let self = self else { return }
-            
-            if let userAuthentication = userAuthentication {
-                self.showMessage(title: "Sucesso", message: "Usuário \(userAuthentication.email) criado com sucesso!")
-            } else {
-                guard let errorMessage = errorMessage else { return }
-                self.showMessage(title: "Error", message: errorMessage)
-            }
+            self.showMessageByUserAthenticationReturn(userAuthentication, errorMessage)
+        }
+    }
+    
+    private func showMessageByUserAthenticationReturn(_ userAuthentication: UserAuthentication?, _ errorMessage: String?) {
+        if let userAuthentication = userAuthentication {
+            showMessage(title: "Sucesso", message: "Usuário \(userAuthentication.email) criado com sucesso!")
+        } else {
+            guard let errorMessage = errorMessage else { return }
+            showMessage(title: "Error", message: errorMessage)
         }
     }
     
