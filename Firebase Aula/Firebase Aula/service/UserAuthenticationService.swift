@@ -18,6 +18,10 @@ private extension String {
 
 public class UserAuthenticationService {
     
+    public init(){
+        addUserAuthenticationStateListner()
+    }
+    
     public func createUserAuthentication(
         email: String,
         password: String,
@@ -70,6 +74,16 @@ public class UserAuthenticationService {
             return .weakPassword
         default:
             return "Error: \(error.localizedDescription)"
+        }
+    }
+    
+    private func addUserAuthenticationStateListner() {
+        Auth.auth().addStateDidChangeListener { (firAuth, user) in
+            if let user = user {
+                print("Usuário logado \(String(describing: user.email)).")
+            }else{
+                print("Nenhum usuário logado!")
+            }
         }
     }
     
