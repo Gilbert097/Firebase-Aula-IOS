@@ -8,13 +8,44 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let userService = UserService()
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    let userAuthenticationService = UserAuthenticationService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userService.getUsers{ users in
-            users.forEach{ print($0.toString()) }
+    }
+    
+    @IBAction func loginButtonClick(_ sender: UIButton) {
+    }
+    
+    @IBAction func createUserButtonClick(_ sender: UIButton) {
+        guard
+            let email = self.emailTextField.text,
+            let password = self.passwordTextField.text
+        else {
+            self.showMessage(title: "Campos obrigatórios", message: "Preencha todos os campos!")
+            return
         }
+        
+        userAuthenticationService.createUserAuthentication(email: email, password: password)
+        { [weak self] (userAuthentication, errorMessage) in
+            guard let self = self else { return }
+            
+            if let userAuthentication = userAuthentication {
+                self.showMessage(title: "Sucesso", message: "Usuário \(userAuthentication.email) criado com sucesso!")
+            } else {
+                guard let errorMessage = errorMessage else { return }
+                self.showMessage(title: "Error", message: errorMessage)
+            }
+        }
+    }
+    
+    private func showMessage(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
 }

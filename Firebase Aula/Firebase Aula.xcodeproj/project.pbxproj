@@ -18,6 +18,8 @@
 		D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93702628CA6000265304 /* UserDataResponse.swift */; };
 		D4EE93752628CB2700265304 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93742628CB2700265304 /* User.swift */; };
 		D4EE93792628EDFF00265304 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93782628EDFF00265304 /* UserService.swift */; };
+		D4EE937D2628F03C00265304 /* UserAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE937C2628F03C00265304 /* UserAuthenticationService.swift */; };
+		D4EE93802628F6F800265304 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE937F2628F6F800265304 /* UserAuthentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		D4EE93702628CA6000265304 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 		D4EE93742628CB2700265304 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4EE93782628EDFF00265304 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D4EE937C2628F03C00265304 /* UserAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationService.swift; sourceTree = "<group>"; };
+		D4EE937F2628F6F800265304 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,6 @@
 				D404AC862627A38600DFC328 /* LaunchScreen.storyboard */,
 				D404AC892627A38600DFC328 /* Info.plist */,
 				D404AC982627A7A500DFC328 /* GoogleService-Info.plist */,
-				D4EE93702628CA6000265304 /* UserDataResponse.swift */,
-				D4EE93742628CB2700265304 /* User.swift */,
 			);
 			path = "Firebase Aula";
 			sourceTree = "<group>";
@@ -106,7 +108,11 @@
 		D4EE93772628EDF100265304 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				D4EE93702628CA6000265304 /* UserDataResponse.swift */,
+				D4EE93742628CB2700265304 /* User.swift */,
 				D4EE93782628EDFF00265304 /* UserService.swift */,
+				D4EE937C2628F03C00265304 /* UserAuthenticationService.swift */,
+				D4EE937F2628F6F800265304 /* UserAuthentication.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -227,6 +233,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D404AC802627A38400DFC328 /* ViewController.swift in Sources */,
+				D4EE937D2628F03C00265304 /* UserAuthenticationService.swift in Sources */,
+				D4EE93802628F6F800265304 /* UserAuthentication.swift in Sources */,
 				D404AC7C2627A38400DFC328 /* AppDelegate.swift in Sources */,
 				D4EE93792628EDFF00265304 /* UserService.swift in Sources */,
 				D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */,
