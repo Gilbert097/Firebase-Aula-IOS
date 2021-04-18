@@ -27,7 +27,11 @@ class ViewController: UIViewController {
             userAuthenticationService.signIn(email: authLogin.email, password: authLogin.password)
             { [weak self] (userAuthentication, errorMessage) in
                 guard let self = self else { return }
-                self.showSiginMessage(userAuthentication: userAuthentication, errorMessage: errorMessage)
+                if userAuthentication != nil {
+                    self.performSegue(withIdentifier: "userListSegue", sender: nil)
+                } else if let errorMessage = errorMessage {
+                    self.showMessage(title: .errorTitle, message: errorMessage)
+                }
             }
         }
     }
@@ -57,11 +61,7 @@ class ViewController: UIViewController {
     }
     
     private func showSiginMessage(userAuthentication: UserAuthentication?,errorMessage: String?) {
-        if userAuthentication != nil {
-            showMessage(title: .successTitle, message: "Usuário logado com sucesso!")
-        } else if let errorMessage = errorMessage {
-            showMessage(title: .errorTitle, message: errorMessage)
-        }
+       
     }
     
     private func showCreateUserMessage(userAuthentication: UserAuthentication?,errorMessage: String?) {
@@ -72,11 +72,22 @@ class ViewController: UIViewController {
         }
     }
     
-    private func showMessage(title: String, message: String) {
+    private func showMessage(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: .alertActionTitle, style: .default, handler: nil)
+        let okAction = UIAlertAction(title: .alertActionTitle, style: .default, handler: handler)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return userAuthenticationService.isUserLogged
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let identifier = segue.identifier,
+//           identifier == "userListSegue",
+//           segue.destination is UserListTableViewController{
+//        print("is UserListTableViewController")
+//        }
+//    }
 }

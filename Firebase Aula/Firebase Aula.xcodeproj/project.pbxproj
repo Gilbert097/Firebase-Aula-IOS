@@ -15,6 +15,7 @@
 		D404AC852627A38600DFC328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D404AC842627A38600DFC328 /* Assets.xcassets */; };
 		D404AC882627A38600DFC328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D404AC862627A38600DFC328 /* LaunchScreen.storyboard */; };
 		D404AC992627A7A500DFC328 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D404AC982627A7A500DFC328 /* GoogleService-Info.plist */; };
+		D408F2D6262B5A2900C00B96 /* UserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F2D5262B5A2900C00B96 /* UserListTableViewController.swift */; };
 		D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93702628CA6000265304 /* UserDataResponse.swift */; };
 		D4EE93752628CB2700265304 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93742628CB2700265304 /* User.swift */; };
 		D4EE93792628EDFF00265304 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EE93782628EDFF00265304 /* UserService.swift */; };
@@ -35,6 +36,7 @@
 		D404AC872627A38600DFC328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D404AC892627A38600DFC328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D404AC982627A7A500DFC328 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D408F2D5262B5A2900C00B96 /* UserListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewController.swift; sourceTree = "<group>"; };
 		D4EE93702628CA6000265304 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 		D4EE93742628CB2700265304 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4EE93782628EDFF00265304 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				D404AC862627A38600DFC328 /* LaunchScreen.storyboard */,
 				D404AC892627A38600DFC328 /* Info.plist */,
 				D404AC982627A7A500DFC328 /* GoogleService-Info.plist */,
+				D408F2D5262B5A2900C00B96 /* UserListTableViewController.swift */,
 			);
 			path = "Firebase Aula";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				D404AC7C2627A38400DFC328 /* AppDelegate.swift in Sources */,
 				D4EE93792628EDFF00265304 /* UserService.swift in Sources */,
 				D4EE93712628CA6000265304 /* UserDataResponse.swift in Sources */,
+				D408F2D6262B5A2900C00B96 /* UserListTableViewController.swift in Sources */,
 				D4EE93752628CB2700265304 /* User.swift in Sources */,
 				D404AC7E2627A38400DFC328 /* SceneDelegate.swift in Sources */,
 			);

@@ -50,11 +50,12 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="loginButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Juw-2C-g2n"/>
+                                            <segue destination="PK1-5h-ZrT" kind="show" identifier="userListSegue" id="YDe-07-4ER"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3u2-Sr-WRV">
                                         <rect key="frame" x="0.0" y="178.66666666666669" width="374" height="30"/>
-                                        <state key="normal" title="Create user">
+                                        <state key="normal" title="Criar usuário">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
                                         <connections>
@@ -93,6 +94,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="39" y="99"/>
+        </scene>
+        <!--Lista de usuários-->
+        <scene sceneID="BW4-pl-4gs">
+            <objects>
+                <tableViewController modalPresentationStyle="fullScreen" id="1th-EO-Pxy" customClass="UserListTableViewController" customModule="Firebase_Aula" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Znb-sY-AvP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bEV-cS-6Eq">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bEV-cS-6Eq" id="3Yp-sJ-cq1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1th-EO-Pxy" id="Sch-Sf-SyJ"/>
+                            <outlet property="delegate" destination="1th-EO-Pxy" id="Yb0-f8-P9E"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Lista de usuários" id="jnP-j4-guP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MG-Z0-z3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897.1014492753625" y="83.967391304347828"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KPK-Gm-ynr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PK1-5h-ZrT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ZRe-Qj-CFG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hIz-Uw-P0x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1th-EO-Pxy" kind="relationship" relationship="rootViewController" id="VIM-5x-GlE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IhW-j7-ERo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="83.967391304347828"/>
         </scene>
     </scenes>
     <resources>

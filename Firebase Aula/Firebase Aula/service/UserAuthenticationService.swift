@@ -25,6 +25,7 @@ public class UserAuthenticationService {
         case signIn
         case createUser
     }
+    private(set) var isUserLogged = false
     
     public init(){
         registerUserAuthenticationStateListner()
@@ -126,10 +127,13 @@ public class UserAuthenticationService {
     }
     
     private func registerUserAuthenticationStateListner() {
-        Auth.auth().addStateDidChangeListener { (firAuth, user) in
+        Auth.auth().addStateDidChangeListener { [weak self] (firAuth, user) in
+            guard let self = self else { return }
             if let user = user, let email = user.email {
+                self.isUserLogged = true
                 print("Usuário logado \(String(describing: email)).")
             }else{
+                self.isUserLogged = false
                 print("Nenhum usuário logado!")
             }
         }
