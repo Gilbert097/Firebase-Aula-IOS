@@ -12,11 +12,11 @@ private extension String {
     static let alertActionTitle = "Ok"
 }
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     typealias  AuthLogin = (email: String, password: String)
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    let userAuthenticationService = UserAuthenticationService()
+    private let userAuthenticationService = UserAuthenticationService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,6 @@ class ViewController: UIViewController {
                 self.showCreateUserMessage(userAuthentication: userAuthentication, errorMessage: errorMessage)
             }
         }
-    }
-    @IBAction func signOutButtonClick(_ sender: UIButton) {
-        userAuthenticationService.signOut()
     }
     
     private func validateFieldsFilled() -> AuthLogin? {

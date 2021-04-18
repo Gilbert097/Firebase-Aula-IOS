@@ -25,9 +25,11 @@ public class UserAuthenticationService {
         case signIn
         case createUser
     }
+    
+    static let shared = UserAuthenticationService()
     private(set) var isUserLogged = false
     
-    public init(){
+    private init(){
         registerUserAuthenticationStateListner()
     }
     

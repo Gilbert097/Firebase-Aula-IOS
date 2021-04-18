@@ -19,7 +19,7 @@ public class UserService {
     public func getUsers(completion: @escaping ([User]) -> Void) {
         usersReference.observe(.value) { (dataSnapshot) in
             let userDataReponse = UserDataResponse(dataSnapshot: dataSnapshot)
-            completion(userDataReponse.users)
+            completion(userDataReponse.users.sorted(by: { $0.code < $1.code }))
         }
     }
     
