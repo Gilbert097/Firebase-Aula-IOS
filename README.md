@@ -2,8 +2,8 @@
 Aplicativo IOS de exemplo criado no modulo "Firebase - Construa Apps extraordinários" do curso Desenvolvimento IOS 12 na Udemy, ministrado pelo professor Jamilton Damasceno. O objetivo do app é aprender a utilizar alguns recursos do Firebase.
 
 No desenvolvimento desse app foi possível aprender os recursos:
-- Firebase Realtime Database: Manipular dados em um banco de dados NoSQL hospedado na nuvem que permitir também sincronizar dados entre usuários em tempo real.
-- Firebase Authentication: Autenticar usuários por email, esse recurso também fornece serviços que permite autenticar o usuário com outros provedores como Google, Facebook, Twitter e etc.
+- <strong>Firebase Realtime Database:</strong> Manipular dados em um banco de dados NoSQL hospedado na nuvem que permitir também sincronizar dados entre usuários em tempo real.
+-  <strong>Firebase Authentication:</strong> Autenticar usuários por email, esse recurso também fornece serviços que permite autenticar o usuário com outros provedores como Google, Facebook, Twitter e etc.
 
 <h1>Telas</h1>
 
